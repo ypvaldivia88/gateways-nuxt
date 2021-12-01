@@ -56,9 +56,9 @@
             >Settings
           </a>
           <a
-            @click="$auth.logout()"
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150"
             role="menuitem"
+            @click="$auth.logout()"
             >Sign out
           </a>
         </div>
@@ -68,24 +68,24 @@
 </template>
 
 <script>
-  import { mixin as clickaway } from "vue-clickaway";
+import { mixin as clickaway } from 'vue-clickaway'
 
-  export default {
-    name: "ProfileDropdown",
-    mixins: [clickaway],
-    data() {
-      return {
-        isOpen: false,
-      };
+export default {
+  name: 'ProfileDropdown',
+  mixins: [clickaway],
+  data() {
+    return {
+      isOpen: false,
+    }
+  },
+  methods: {
+    toggleDropdown() {
+      this.isOpen = !this.isOpen
     },
-    methods: {
-      toggleDropdown() {
-        this.isOpen = !this.isOpen;
-      },
-      away() {
-        this.isOpen = false;
-      },
+    away() {
+      this.isOpen = false
     },
-  };
+  },
+}
 </script>
 <style scoped></style>
