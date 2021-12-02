@@ -2,6 +2,8 @@
   "name": "gateways-nuxt",
   "version": "1.0.0",
   "private": true,
+  "author": "Yasmani Palmero",
+  "license": "ISC",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -9,10 +11,17 @@
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "yarn lint:js",
-    "test": "jest"
+    "test": "jest --runInBand ./api/test"
   },
   "dependencies": {
+    "@braid/vue-formulate": "^2.5.2",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/toast": "^3.3.1",
+    "body-parser": "^1.19.0",
     "core-js": "^3.15.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.14",
     "nuxt": "^2.15.7",
     "vue-clickaway": "^2.2.2"
   },
@@ -29,8 +38,12 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
     "jest": "^27.0.5",
+    "mongodb-memory-server": "^6.6.1",
     "postcss": "^8.3.5",
     "prettier": "^2.3.2",
     "vue-jest": "^3.0.4"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
