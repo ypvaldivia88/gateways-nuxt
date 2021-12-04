@@ -1,17 +1,12 @@
 /* eslint-disable no-console */
-const express = require('express')
-const app = express()
 const bodyParser = require('body-parser')
+const app = require('express')()
 
-require('./config/db-handler')
-const server = app.listen(4000)
-
-app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // Configuring the database
-const dbConfig = require('./config/db-handler')
-dbConfig.connect()
+const { connect } = require('./config/db-handler')
+connect()
 
 // define a simple route
 app.get('/', (req, res) => {
@@ -26,4 +21,4 @@ const gatewayRoutes = require('./routes/gatewayRoutes')
 deviceRoutes(app)
 gatewayRoutes(app)
 
-module.exports = { app, server }
+module.exports = app

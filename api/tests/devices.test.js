@@ -1,6 +1,6 @@
 import supertest from 'supertest'
-import mongoose from 'mongoose'
-import { app, server } from '../index.js'
+import app from '../index.js'
+import { closeDatabase, clearDatabase } from '../config/db-handler'
 import Gateway from '../models/gateway.js'
 import Device from '../models/device.js'
 
@@ -28,8 +28,7 @@ const deviceObjects = [
 let gatId = ''
 
 beforeEach(async () => {
-  await Gateway.deleteMany({})
-  await Device.deleteMany({})
+  clearDatabase()
   for (const gateway of gatewayObjects) {
     const gat = await new Gateway(gateway).save()
     gatId = gat._id
@@ -87,6 +86,5 @@ describe('Create device', () => {
 })
 
 afterAll(() => {
-  mongoose.connection.close()
-  server.close()
+  closeDatabase()
 })

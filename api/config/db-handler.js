@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
  */
 module.exports.connect = async () => {
   await mongoose.connect(
-    'mongodb+srv://gateways:lR5gnF12Zw6UJmrb@gateways.imdyw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    'mongodb+srv://gateways:j97FSwXKJ7phEDaX@gateways.imdyw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     {
       dbName: 'musula',
       useNewUrlParser: true,

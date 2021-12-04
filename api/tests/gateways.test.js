@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import supertest from 'supertest'
-import mongoose from 'mongoose'
-import { app, server } from '../index.js'
+import app from '../index.js'
+import { closeDatabase, clearDatabase } from '../config/db-handler'
 import Gateway from '../models/gateway.js'
 
 const api = supertest(app)
@@ -17,7 +17,7 @@ const gatewayObjects = [
 ]
 
 beforeEach(async () => {
-  await Gateway.deleteMany({})
+  clearDatabase()
   for (const gateway of gatewayObjects) {
     await new Gateway(gateway).save()
   }
@@ -97,6 +97,5 @@ describe('Feth gateways', () => {
 })
 
 afterAll(() => {
-  mongoose.connection.close()
-  server.close()
+  closeDatabase()
 })
