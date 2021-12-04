@@ -28,8 +28,8 @@
     <template #contentArea>
       <ul>
         <li v-for="(gateway, key) in gateways" :key="key">
-          <a
-            href="#"
+          <nuxt-link
+            :to="{ name: 'view', params: gateway }"
             class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out"
           >
             <div class="flex items-center px-4 py-4 sm:px-6">
@@ -108,7 +108,7 @@
                 </svg>
               </div>
             </div>
-          </a>
+          </nuxt-link>
         </li>
       </ul>
     </template>
