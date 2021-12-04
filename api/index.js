@@ -2,13 +2,9 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const port = process.env.PORT || 4000
 
 require('./config/db-handler')
-
-app.listen(port)
-
-console.log('API server started on: ' + port)
+const server = app.listen(4000)
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -30,4 +26,4 @@ const gatewayRoutes = require('./routes/gatewayRoutes')
 deviceRoutes(app)
 gatewayRoutes(app)
 
-module.exports = app
+module.exports = { app, server }
